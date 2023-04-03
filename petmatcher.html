@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pet Quiz</title>
+</head>
+<body>
+	<h1>Pet Quiz</h1>
+	<form method="post" action="submit_data.py">
+		<label for="living">Do you live in:</label>
+		<br>
+		<input type="radio" name="living" value="house">A House<br>
+		<input type="radio" name="living" value="apartment">An Apartment<br>
+		<br>
+
+		<label for="space">How much space do you have for a pet:</label>
+		<br>
+		<input type="radio" name="space" value="corner">A corner of a room<br>
+		<input type="radio" name="space" value="balcony">A balcony<br>
+		<input type="radio" name="space" value="yard">A yard<br>
+		<br>
+
+		<label for="lifestyle">What is your living style like:</label>
+		<br>
+		<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
+		<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
+		<br>
+
+		<label for="budget">What is your budget to take care of your pet (food, supplies, etc.):</label>
+		<br>
+		<input type="radio" name="budget" value="$50">$50<br>
+		<input type="radio" name="budget" value="$100">$100<br>
+		<input type="radio" name="budget" value="$200">$200<br>
+		<input type="radio" name="budget" value="anything">Anything for the pet<br>
+		<br>
+
+		<label for="allergies">Do you have any allergies:</label>
+		<br>
+		<input type="radio" name="allergies" value="fur">Yes - Fur<br>
+		<input type="radio" name="allergies" value="other">Yes - Other<br>
+		<input type="radio" name="allergies" value="none">No<br>
+		<br>
+
+		<label for="hours">How many hours per day can you take care of your pet:</label>
+		<br>
+		<input type="radio" name="hours" value="<3 hours">&lt;3 hours<br>
+		<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
+		<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
+		<input type="radio" name="hours" value="all day">All day, every day<br>
+		<br>
+
+		<label for="promise">Do you promise to take care of your pet as if they were your own child:</label>
+		<br>
+		<input type="radio" name="promise" value="yes">Yes<br>
+		<input type="radio" name="promise" value="no">No<br>
+		<br>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
