@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Pet Matcher</title>
@@ -19,7 +19,7 @@
 		<input type="radio" name="space" value="yard">A yard<br>
 		<br>
 
-		<label for="lifestyle">What is your living style like:</label>
+		<label for="lifestyle">Describe your lifestyle:</label>
 		<br>
 		<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
 		<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
@@ -57,4 +57,124 @@
 		<input type="submit" value="Submit">
 	</form>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pet Matcher</title>
+	<script>
+		// Function to show or hide a group of radio buttons based on the user's previous answer
+		function showQuestion(previousAnswer, questionID, nextQuestionID) {
+    var question = document.getElementById(questionID);
+    if (previousAnswer === "") {
+        // If the user has not answered any questions yet, show this question
+        question.style.display = "block";
+    } else {
+        // If the user has answered previous questions, hide this question and its radio buttons
+        question.style.display = "none";
+        var radioButtons = question.getElementsByTagName("input");
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].type === "radio") {
+                radioButtons[i].checked = false;
+            }
+        }
+        // If the next question's container element exists, hide it
+        var nextQuestion = document.getElementById(nextQuestionID);
+        if (nextQuestion) {
+            nextQuestion.style.display = "none";
+        }
+    }
+    // Show the container element of the next question if the user has answered this question
+    if (previousAnswer !== "") {
+        var nextQuestion = document.getElementById(nextQuestionID);
+        nextQuestion.style.display = "block";
+    }
+}
+
+
+		// Function to handle the submission of the form
+		function handleSubmit(event) {
+			event.preventDefault();
+			// Do something with the form data
+			console.log("Form submitted!");
+		}
+	</script>
+</head>
+<body onload="showQuestion('', 'question1')">
+	<h1>Pet Matcher</h1>
+	<form method="post" action="script.py">  
+		<div id="question1">
+			<label>Do you live in:</label>
+			<br>
+			<input type="radio" name="living" value="house">A House<br>
+			<input type="radio" name="living" value="apartment">An Apartment<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'living\']:checked').value, 'question1', 'question2')">
+
+		</div>
+
+		<div id="question2" style="display:none">
+			<label>How much space do you have for a pet:</label>
+			<br>
+			<input type="radio" name="space" value="corner">A corner of a room<br>
+			<input type="radio" name="space" value="balcony">A balcony<br>
+			<input type="radio" name="space" value="yard">A yard<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'space\']:checked').value, 'question2','question3')">
+		</div>
+
+		<div id="question3" style="display:none">
+			<label>Describe your lifestyle:</label>
+			<br>
+			<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
+			<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'lifestyle\']:checked').value, 'question3', 'question4')">
+		</div>
+
+		<div id="question4" style="display:none">
+			<label>What is your budget to take care of your pet (food, supplies, etc.):</label>
+			<br>
+			<input type="radio" name="budget" value="$50">$50<br>
+			<input type="radio" name="budget" value="$100">$100<br>
+			<input type="radio" name="budget" value="$200">$200<br>
+			<input type="radio" name="budget" value="anything">Anything for the pet<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'budget\']:checked').value, 'question4', 'question5')">
+		</div>
+
+		<div id="question5" style="display:none">
+			<label>Do you have any allergies:</label>
+			<br>
+			<input type="radio" name="allergies" value="fur">Yes - Fur<br>
+			<input type="radio" name="allergies" value="other">Yes - Other<br>
+			<input type="radio" name="allergies" value="none">No<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'allergies\']:checked').value, 'question5', 'question6')">
+		</div>
+
+		<div id="question6" style="display:none">
+			<label>How many hours per day can you take care of your pet:</label>
+			<br>
+			<input type="radio" name="hours" value="3 hours">&lt;3 hours<br>
+			<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
+			<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
+			<input type="radio" name="hours" value="all day">All day, every day<br>
+			<br>
+			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'hours\']:checked').value, 'question6','question7')">
+		</div>
+
+		<div id="question7" style="display:none">
+			<label>Do you promise to take care of your pet as if they were your own child:</label>
+			<br>
+			<input type="radio" name="promise" value="yes">Yes<br>
+			<input type="radio" name="promise" value="no">No<br>
+			<br>
+			<input type="submit" value="Submit">
+		</div>
+	</form>
+</body>
 </html>
+
+
