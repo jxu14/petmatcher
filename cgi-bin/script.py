@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-
 import cgi
 import cgitb
 import requests
 import json
+import time
+import subprocess
 
 cgitb.enable()
 
@@ -26,62 +27,86 @@ if living == 'house':
 elif living == 'apartment':
     animal_size = 'Small, Medium'
     animal_house_trained = 1
-    
+
 # set size based on space
 if space == 'corner':
     animal_size = 'Small'
-    
+
 # set tags based on lifestyle -- excluded for now
 
 # exclude certain types based on allergies - excluded for now
+API_TOKEN = None
 
-API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJZY1NkRmhZZHdrZUpTUU9rMzlQV1VuSnJCZlZtQVpJcm81MVVkeWhFSjBNY1FtaWwxTyIsImp0aSI6IjFhMjNiNzBhNDU3MmU5NmViYzQxNzNlYTBhM2I0NDZiYTAzMmFkN2Q2Y2JlMzAwNzg1NWVjZjQxZmM0YmIyYTM0ZWUzMjNmNzExODFkOTM3IiwiaWF0IjoxNjgwNjI1NDkxLCJuYmYiOjE2ODA2MjU0OTEsImV4cCI6MTY4MDYyOTA5MSwic3ViIjoiIiwic2NvcGVzIjpbXX0.KYOgoq6XLHtt3xV9Ly6xlrsa7JCqSJrgTqYyxB7cwzlBp2dak8DAEz-QtaDT_a-dR6rdwKNV7seJ9Xlcx-QVCQdbxEwlQTEEBHyMC8xffIULSoRwaxpJ7iVxQdExEFes5rEEk0LC8kDlgjiHNI5R1uqM9TG4I_WWGoiL3dJQG90NxBt2Id2zQ-xA-H5t6LHMnpi2DDsP72zg9Sj2rQtDDMrsoHlqtFVi2TuanN9ZqOL-wmknaOMtnHXmQfbYp9BpClR7UD-yX8FE0d1N3V-c65tlFpl-0NO255-ktUOQ-QUEORRlYkGGS1_DEobCrrFDVxOw6OuJHsZ67gtcddIzpQ"
-
-headers = {
-    "Authorization": f"Bearer {API_TOKEN}"
-}
-
-params = {
-    # "size": animal_size,
-}
-
-response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
-
-data = json.loads(response.text)
-
-# extract the first three animals
-animals = data['animals'][:3]
-
-# get info
-all_matches = ''
-animal_names = set()
-for animal in animals:
-    name = animal['name']
-    if name in animal_names:
-        continue # skip this animal if we've already seen it
-    animal_names.add(name) 
-    description = animal['description']
-    if animal['photos']:
-        photo = animal['photos'][0]['medium']
+def get_token():
+    global API_TOKEN
+    url = "https://api.petfinder.com/v2/oauth2/token"
+    data = {
+        "grant_type": "client_credentials",
+        "client_id": "YcSdFhYdwkeJSQOk39PWUnJrBfVmAZIro51UdyhEJ0McQmil1O",
+        "client_secret": "yEEZzcE7qW4g041ebddXCc7mPpmSNCjw4TVHYQL0"
+    }
+    response = requests.post(url, data=data)
+    if response.status_code == 200:
+        API_TOKEN = json.loads(response.text)['access_token']
+        return True
     else:
-        photo = 'No photo available'
-    animal_type = animal['type']
-    primary_breed = animal['breeds']['primary']
-    age = animal['age']
-    
-    # format the information in a box
-    box = f'''
-        <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
-            <h3>{name}</h3>
-            <p>{description}</p>
-            <img src="{photo}" style="max-width: 300px;">
-            <p>Type: {animal_type}</p>
-            <p>Primary Breed: {primary_breed}</p>
-            <p>Age: {age}</p>
-        </div>
-    '''
-    
-    all_matches += box
+        return False
+
+def get_animals():
+    global API_TOKEN
+    headers = {
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
+    params = {
+        # "size": animal_size,
+    }
+    response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
+    if response.status_code == 401:
+        if get_token():
+            headers = {
+                "Authorization": f"Bearer {API_TOKEN}"
+            }
+            response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
+        else:
+            return None
+    if response.status_code == 200:
+        data = json.loads(response.text)
+        return data['animals'][:3]
+    else:
+        return None
+def format_animals(animals):        
+    all_matches = ''
+    animal_names = set()
+    for animal in animals:
+        name = animal['name']
+        if name in animal_names:
+            continue # skip this animal if we've already seen it
+        animal_names.add(name)
+        description = animal['description']
+        if animal['photos']:
+            photo = animal['photos'][0]['medium']
+        else:
+            photo = 'No photo available'
+        animal_type = animal['type']
+        primary_breed = animal['breeds']['primary']
+        age = animal['age']
+
+        # format the information in a box
+        box = f'''
+            <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                <h3>{name}</h3>
+                <p>{description}</p>
+                <img src="{photo}" style="max-width: 300px;">
+                <p>Type: {animal_type}</p>
+                <p>Primary Breed: {primary_breed}</p>
+                <p>Age: {age}</p>
+            </div>
+        '''
+
+        all_matches += box
+    return all_matches
+# get info
+animals = get_animals()
 
 # Print the answers
 print("Content-Type: text/html")    # Set the content type of the response
@@ -99,6 +124,6 @@ print("<p>Budget: " + str(budget) + "</p>")
 print("<p>Allergies: " + str(allergies) + "</p>")
 print("<p>Hours available: " + str(hours) + "</p>")
 print("<p>Promise: " + str(promise) + "</p>")
-print(all_matches)
+print(format_animals(animals))
 print("</body>")
 print("</html>")
