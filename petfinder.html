@@ -5,13 +5,15 @@
 	<title>PetFinder</title>
 </head>
 <body>
-	<h1>PetFinder</h1>
+	<h1 class="logo">PetFinder</h1>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+	<p>You are here because you already know what type of pet you want. Answer the questions below and we'll find pets
+		in local shelters that meet what you're looking for!<p>
+	<hr>
 	<form method="get" action="/cgi-bin/finder_script.py">
-		<label for="living">Do you live in:</label>
+		<label for="location">Enter your city and state:</label>
 		<br>
-		<input type="radio" name="living" value="house">A House<br>
-		<input type="radio" name="living" value="apartment">An Apartment<br>
+		<input type="text" class="textbox">
 		<br>
 
 		<label for="space">How much space do you have for a pet:</label>

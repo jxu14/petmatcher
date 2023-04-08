@@ -7,7 +7,14 @@ body {
 h1, label {
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    border-style: dot-dash;
+}
+
+.logo {
+    display: inline;
+    border-style: dotted;
+    border-color: black;
+    border-width: 1px;
+    padding: 2px;
 }
 
 form {
@@ -52,4 +59,8 @@ label, input[type=radio] {
     height: auto;
     vertical-align: middle;
     max-height: 180px;
+}
+
+.textbox {
+    margin: 5px;
 }
