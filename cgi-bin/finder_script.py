@@ -12,25 +12,16 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 # Get the answers to the questions
-living = form.getvalue('living')
+city = form.getvalue('city')
+city = str(city).capitalize()
+state = form.getvalue('state')
+state = str(state)
 space = form.getvalue('space')
 lifestyle = form.getvalue('lifestyle')
 budget = form.getvalue('budget')
 allergies = form.getvalue('allergies')
 hours = form.getvalue('hours')
 promise = form.getvalue('promise')
-
-### Match answer to tags
-# set size based on living space
-if living == 'house':
-    animal_size = 'Large, Xlarge'
-elif living == 'apartment':
-    animal_size = 'Small, Medium'
-    animal_house_trained = 1
-
-# set size based on space
-if space == 'corner':
-    animal_size = 'Small'
 
 # set tags based on lifestyle -- excluded for now
 
@@ -117,7 +108,8 @@ print("<title>PetFinder Results</title>")
 print("</head>")
 print("<body>")
 print("<h1>PetFinder Results</h1>")
-print("<p>Living place: " + str(living) + "</p>")
+print("<p>City: " + city + "</p>")
+print("<p>State: " + state + "</p>")
 print("<p>Space for pet: " + str(space) + "</p>")
 print("<p>Living style: " + str(lifestyle) + "</p>")
 print("<p>Budget: " + str(budget) + "</p>")
