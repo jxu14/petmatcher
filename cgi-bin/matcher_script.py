@@ -113,10 +113,10 @@ print("Content-Type: text/html")    # Set the content type of the response
 print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
-print("<title>Pet Finder Results</title>")
+print("<title>PetMatcher Results</title>")
 print("</head>")
 print("<body>")
-print("<h1>Pet Finder Results</h1>")
+print("<h1>PetMatcher Results</h1>")
 print("<p>Living place: " + str(living) + "</p>")
 print("<p>Space for pet: " + str(space) + "</p>")
 print("<p>Living style: " + str(lifestyle) + "</p>")
