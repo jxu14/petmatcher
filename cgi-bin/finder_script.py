@@ -104,7 +104,7 @@ print("Content-Type: text/html")    # Set the content type of the response
 print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
-print("<title>PetFinder2 Results</title>")
+print("<title>PetFinder Results</title>")
 print("</head>")
 print("<hr>")
 print("<body>")
