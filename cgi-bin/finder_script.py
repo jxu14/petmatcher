@@ -122,7 +122,7 @@ print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
 # add the css file
-print("<link rel='stylesheet' type='text/css' href='style.css'>")
+print("<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles.css\" media=\"screen\"/>")
 print("<title>PetFinder Results</title>")
 print("</head>")
 print("<hr>")
