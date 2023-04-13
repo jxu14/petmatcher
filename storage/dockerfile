@@ -1,0 +1,26 @@
+# Use an official Nginx runtime as the base image
+FROM nginx
+
+# Copy HTML files
+COPY index.html /var/www/html/
+COPY petmatcher.html /var/www/html/
+COPY petfinder.html /var/www/html/
+COPY styles.css /var/www/html/
+
+
+# Copy CGI scripts
+COPY cgi-bin/matcher_script.py /usr/lib/cgi-bin/
+COPY cgi-bin/finder_script.py /usr/lib/cgi-bin/
+
+
+
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+
+RUN chmod 755 /var/www/html/
+RUN chmod 644 /var/www/html/index.html
+RUN chmod 644 /var/www/html/petmatcher.html
+RUN chmod 644 /var/www/html/petfinder.html
+
+# Expose port 80 for Nginx to listen on
+EXPOSE 80
