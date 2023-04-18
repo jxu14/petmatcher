@@ -95,7 +95,7 @@ def format_animals(animals):
             photo = animal['photos'][0]['medium']
         else:
             photo = 'No photo available'
-            
+
         animal_type = animal['type']
         primary_breed = animal['breeds']['primary']
         age = animal['age']
