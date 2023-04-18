@@ -110,16 +110,16 @@ label, input[type=radio] {
     cursor: pointer;
   }
   
-  .range-slider label {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    width: calc(100% / 5);
-    font-size: 14px;
-    color: #999;
-    text-align: center;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .slider-label {
+      display: inline-block;
+      text-align: center;
+        width: calc(100% / 5);
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
   }
   
