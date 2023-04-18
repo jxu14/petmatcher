@@ -20,6 +20,25 @@ allergies = form.getvalue('allergies')
 hours = form.getvalue('hours')
 promise = form.getvalue('promise')
 
+# answers with scale of 1-5
+party = form.getvalue('party')
+affection = form.getvalue('affection')
+nap = form.getvalue('nap')
+socialize = form.getvalue('socialize')
+lively = form.getvalue('lively')
+challenge = form.getvalue('challenge')
+
+# calculate scores for each animal based on user input
+dog_score = party + affection + lively + challenge
+cat_score = affection + nap + socialize + challenge
+
+# determine which animal to suggest based on scores
+# if dog_score > cat_score:
+#     # get a dog
+# else:
+#     # get a cat
+
+
 ### Match answer to tags
 # set size based on living space
 if living == 'house':
@@ -74,6 +93,7 @@ def get_animals():
         return data['animals'][:3]
     else:
         return None
+
 def format_animals(animals):        
     all_matches = ''
     animal_names = set()

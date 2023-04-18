@@ -46,7 +46,7 @@
 
 		<label for="hours">How many hours per day can you take care of your pet:</label>
 		<br>
-		<input type="radio" name="hours" value="<3 hours">&lt;3 hours<br>
+		<input type="radio" name="hours" value="3 hours">&lt;3 hours<br>
 		<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
 		<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
 		<input type="radio" name="hours" value="all day">All day, every day<br>
@@ -57,6 +57,81 @@
 		<input type="radio" name="promise" value="yes">Yes<br>
 		<input type="radio" name="promise" value="no">No<br>
 		<br>
+
+		<label>Answer the following where 1 - least likely and 5 - most likely</label>
+		<br><br>
+
+		<label for="party">After a long day, I want to go out for a party with friends:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="party" min="1" max="5" value="3" id="party-slider">
+			<label for="party-slider">1</label>
+			<label for="party-slider">2</label>
+			<label for="party-slider">3</label>
+			<label for="party-slider">4</label>
+			<label for="party-slider">5</label>
+		</div>
+		<br><br>
+
+		<label for="affection">I tend to enjoy physical affection a lot:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="affection" min="1" max="5" value="3" id="affection-slider">
+			<label for="affection-slider">1</label>
+			<label for="affection-slider">2</label>
+			<label for="affection-slider">3</label>
+			<label for="affection-slider">4</label>
+			<label for="affection-slider">5</label>
+		</div>
+		<br><br>
+
+		<label for="nap">When I am down, I want to lay down and take a nap:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="nap" min="1" max="5" value="3" id="nap-slider">
+			<label for="nap-slider">1</label>
+			<label for="nap-slider">2</label>
+			<label for="nap-slider">3</label>
+			<label for="nap-slider">4</label>
+			<label for="nap-slider">5</label>
+		</div>
+		<br><br>
+
+		<label for="socialize">When I go out, I like to socialize and meet new people:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="socialize" min="1" max="5" value="3" id="socialize-slider">
+			<label for="socialize-slider">1</label>
+			<label for="socialize-slider">2</label>
+			<label for="socialize-slider">3</label>
+			<label for="socialize-slider">4</label>
+			<label for="socialize-slider">5</label>
+		</div>
+		<br><br>
+
+		<label for="lively">I like having a lively, sometimes even noisy, household:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="lively" min="1" max="5" value="3" id="lively-slider">
+			<label for="lively-slider">1</label>
+			<label for="lively-slider">2</label>
+			<label for="lively-slider">3</label>
+			<label for="lively-slider">4</label>
+			<label for="lively-slider">5</label>
+		</div>
+		<br><br>
+
+		<label for="challenge">I enjoy a good challenge:</label>
+		<br>
+		<div class="range-slider">
+			<input type="range" name="challenge" min="1" max="5" value="3" id="challenge-slider">
+			<label for="challenge-slider">1</label>
+			<label for="challenge-slider">2</label>
+			<label for="challenge-slider">3</label>
+			<label for="challenge-slider">4</label>
+			<label for="challenge-slider">5</label>
+		</div>
+		<br><br>
 
 		<input type="submit" value="Submit">
 	</form>

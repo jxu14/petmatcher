@@ -68,3 +68,58 @@ label, input[type=radio] {
 #statedropdown {
     max-width: 150px;
 }
+
+.range-slider {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .range-slider input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .range-slider input[type=range]:focus {
+    outline: none;
+  }
+  
+  .range-slider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    cursor: pointer;
+  }
+  
+  .range-slider input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    cursor: pointer;
+  }
+  
+  .range-slider label {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 5);
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
