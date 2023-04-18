@@ -19,12 +19,14 @@ body {
 form {
     margin: 30px auto;
     width: 80%;
-    max-width: 600px;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px #ddd;
+}
+
+#matcherform {
     text-align: center;
 }
 
@@ -155,6 +157,14 @@ h3 {
 
 .multiplechoice {
     text-align: left;
+}
+
+label.multiplechoice {
+    font-size:24px;
+}
+
+input.multiplechoice {
+    font-size: 20px;
 }
 
 .welcome {
