@@ -95,9 +95,20 @@ def format_animals(animals):
             photo = animal['photos'][0]['medium']
         else:
             photo = 'No photo available'
+            
         animal_type = animal['type']
         primary_breed = animal['breeds']['primary']
         age = animal['age']
+        link = animal['url']
+        gender = animal['gender']
+        contact = animal['contact']
+        email = contact['email']
+        phone = contact['phone']
+        address = contact['address']
+        conv = lambda i: i or ''
+        street_num = conv(address['address1'])
+        formatted_address = street_num + " " + str(address['city']) + ", " + str(address['state']) + " " + str(
+            address['postcode'])
 
         # format the information in a box
         box = f'''
@@ -108,6 +119,16 @@ def format_animals(animals):
                 <p>Type: {animal_type}</p>
                 <p>Primary Breed: {primary_breed}</p>
                 <p>Age: {age}</p>
+                <p>Gender: {gender} </p>
+                <h3>Contact info</h3>
+                <span>&ensp;Email: {email} </span>
+                <br>
+                <span>&ensp;Phone Number: {phone} </span>
+                <br>
+                <span>&ensp;Address: {formatted_address} </span>
+                <br>
+                <br>
+                <a href="{link}">Click here to learn more about {name}</a>
             </div>
         '''
 
@@ -121,7 +142,6 @@ print("Content-Type: text/html")    # Set the content type of the response
 print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
-# add the css file
 print("<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles.css\" media=\"screen\"/>")
 print("<title>PetFinder Results</title>")
 print("</head>")
