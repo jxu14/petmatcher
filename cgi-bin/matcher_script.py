@@ -228,6 +228,7 @@ print("<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles.css\" media=\
 print("<title>PetMatcher Results</title>")
 print("</head>")
 print("<body>")
+print("<a href=\"/index.html\"><img src=\"https://i.imgur.com/AFDeZ98.png\" alt=\"PetMatcher\" class=\"logo\"></a>")
 print(are_you_dog_or_cat())
 print("<h1>PetMatcher Results:</h1>")
 print("<p>Living place: " + str(living) + "</p>")

@@ -34,9 +34,10 @@
 	</script>
 </head>
 <body>
-	<h1 class="logo">PetFinder</h1>
+	<a href="/index.html"><img src="https://i.imgur.com/AFDeZ98.png" alt="PetMatcher" class="logo"></a>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	<p>You are here because you already know what type of pet you want. Answer the questions below and we'll
+	<h1 class="welcome">Welcome!</h1>
+	<p class="welcome">You are here because you already know what type of pet you want. Answer the questions below and we'll
 		help find your dream pet!<p>
 	<hr>
 	<form method="get" action="/cgi-bin/finder_script.py">
@@ -62,6 +63,7 @@
 			<option value="IL">Illinois</option>
 			<option value="IN">Indiana</option>
 			<option value="IA">Iowa</option>
+			<option value="KS">Kansas</option>
 			<option value="KS">Kansas</option>
 			<option value="KY">Kentucky</option>
 			<option value="LA">Louisiana</option>
@@ -99,7 +101,8 @@
 			<option value="WY">Wyoming</option>
 		</select>
 		<br>
-		<label for="type">What type of pet do you want:</label>
+		<br>
+		<label for="type">What type of pet do you want?</label>
 		<br>
 		<input type="radio" name="type" value="Cat" onchange="showNextQuestion()">Cat<br>
 		<input type="radio" name="type" value="Dog" onclick="showNextQuestion()">Dog<br>
@@ -208,7 +211,7 @@
 		<div id="dogQuestion" style="display:none;">
 			<label for="breed">Any particular breed?</label>
 			<select name="breed" id="dogdropdown">
-			<option style="display:none">`
+			<option style="display:none">
 				<option value="">Any</option>
 				<option value="Affenpinscher">Affenpinscher</option>
 				<option value="Afghan Hound">Afghan Hound</option>
@@ -428,7 +431,6 @@
 				<option value="Wirehaired Pointing Griffon">Wirehaired Pointing Griffon</option>
 				<option value="Xoloitzcuintli">Xoloitzcuintli</option>
 				<option value="Yorkshire Terrier">Yorkshire Terrier</option>
-				<option value="Other">Other</option>
 			</select>
 			<br>
 			<br>
@@ -441,6 +443,7 @@
 			<input type="radio" name="distance" value=500>As far as it takes<br>
 			<br>
 			<label for="age">How old do you want your dog to be?</label><br>
+
 			<input type="checkbox" name="age" value="baby">Puppy<br>
 			<input type="checkbox" name="age" value="young">Young<br>
 			<input type="checkbox" name="age" value="adult">Adult<br>
@@ -452,8 +455,91 @@
 			<input type="radio" name="needs" value="">No<br>
 			<br>
 		</div>
+	</div>
+	<div id="rabbitQuestion" style="display:none;">
+		<label for="breed">Any particular breed?</label>
+		<select name="breed" id="rabbitdropdown">
+		<option style="display:none">
+			<option value="">Any</option>
+			<option value="American">American</option>
+			<option value="American Fuzzy Lop">American Fuzzy Lop</option>
+			<option value="American Sable">American Sable</option>
+			<option value="Angora Rabbit">Angora Rabbit</option>
+			<option value="Belgian Hare">Belgian Hare</option>
+			<option value="Beveren">Beveren</option>
+			<option value="Britannia Petite">Britannia Petite</option>
+			<option value="Bunny Rabbit">Bunny Rabbit</option>
+			<option value="Californian">Californian</option>
+			<option value="Champagne D'Argent">Champagne D'Argent</option>
+			<option value="Checkered Giant">Checkered Giant</option>
+			<option value="Chinchilla">Chinchilla</option>
+			<option value="Cinnamon">Cinnamon</option>
+			<option value="Creme D'Argent">Creme D'Argent</option>
+			<option value="Dutch">Dutch</option>
+			<option value="Dwarf">Dwarf</option>
+			<option value="Dwarf Eared">Dwarf Eared</option>
+			<option value="English Lop">English Lop</option>
+			<option value="English Spot">English Spot</option>
+			<option value="Flemish Giant">Flemish Giant</option>
+			<option value="Florida White">Florida White</option>
+			<option value="French Lop">French Lop</option>
+			<option value="Harlequin">Harlequin</option>
+			<option value="Havana">Havana</option>
+			<option value="Himalayan">Himalayan</option>
+			<option value="Holland Lop">Holland Lop</option>
+			<option value="Hotot">Hotot</option>
+			<option value="Jersey Wooly">Jersey Wooly</option>
+			<option value="Lionhead">Lionhead</option>
+			<option value="Mini Lop">Mini Lop</option>
+			<option value="Mini Rex">Mini Rex</option>
+			<option value="Netherland Dwarf">Netherland Dwarf</option>
+			<option value="New Zealand">New Zealand</option>
+			<option value="Palomino">Palomino</option>
+			<option value="Polish">Polish</option>
+			<option value="Rex">Rex</option>
+			<option value="Rhinelander">Rhinelander</option>
+			<option value="Satin">Satin</option>	
+			<option value="Silver">Silver</option>	
+			<option value="Silver Fox">Silver Fox</option>
+			<option value="Silver Marten">Silver Marten</option>
+			<option value="Tan">Tan</option>
+		</select>
+			<br>
+			<br>
+			<br>
+			<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
+			<label for="age">How old do you want your rabbit to be?</label><br>
+
+			<input type="checkbox" name="age" value="baby">Baby<br>
+			<input type="checkbox" name="age" value="young">Young<br>
+			<input type="checkbox" name="age" value="adult">Adult<br>
+			<input type="checkbox" name="age" value="senior">Senior<br>
+			<br>
+			<br>
+			<label for="needs">Would you be able to give a special needs rabbit a good home?</label><br>
+			<input type="radio" name="needs" value="true">Yes<br>
+			<input type="radio" name="needs" value="">No<br>
+			<br>
+	</div>
+	<div id="otherQuestion" style="display:none;">
+		<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
+	</div>
 		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>
-
+    
+     
+         
