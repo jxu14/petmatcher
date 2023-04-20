@@ -21,23 +21,52 @@ hours = form.getvalue('hours')
 promise = form.getvalue('promise')
 
 # answers with scale of 1-5
-party = form.getvalue('party')
-affection = form.getvalue('affection')
-nap = form.getvalue('nap')
-socialize = form.getvalue('socialize')
-lively = form.getvalue('lively')
-challenge = form.getvalue('challenge')
+party = int(form.getvalue('party'))
+affection = int(form.getvalue('affection'))
+nap = int(form.getvalue('nap'))
+socialize = int(form.getvalue('socialize'))
+lively = int(form.getvalue('lively'))
+challenge = int(form.getvalue('challenge'))
 
 # calculate scores for each animal based on user input
 dog_score = party + affection + lively + challenge
 cat_score = affection + nap + socialize + challenge
 
-# determine which animal to suggest based on scores
-# if dog_score > cat_score:
-#     # get a dog
-# else:
-#     # get a cat
+# calculate overall scores and percentages
+total_score = dog_score + cat_score
+dog_percentage = round(dog_score / total_score * 100, 1)
+cat_percentage = round(cat_score / total_score * 100, 1)
 
+# determine which animal to suggest based on scores
+dog_scores = {
+    'French Bulldog': 0.15 * lively + 0.15 * socialize + 0.1 * party + 0.2 * affection + 0.1 * challenge + 0.15 * nap,
+    'Labrador Retriever': 0.1 * lively + 0.1 * socialize + 0.1 * party + 0.15 * affection + 0.2 * challenge + 0.25 * nap,
+    'Golden Retriever': 0.1 * lively + 0.1 * socialize + 0.15 * party + 0.15 * affection + 0.15 * challenge + 0.25 * nap,
+    'German Shepherd Dog': 0.1 * lively + 0.1 * socialize + 0.15 * party + 0.2 * affection + 0.1 * challenge + 0.25 * nap,
+    'Poodle': 0.15 * lively + 0.1 * socialize + 0.1 * party + 0.2 * affection + 0.1 * challenge + 0.25 * nap,
+    'Bulldog': 0.1 * lively + 0.05 * socialize + 0.15 * party + 0.15 * affection + 0.25 * challenge + 0.25 * nap,
+    'Rottweiler': 0.1 * lively + 0.1 * socialize + 0.1 * party + 0.15 * affection + 0.25 * challenge + 0.25 * nap,
+    'Beagle': 0.1 * lively + 0.2 * socialize + 0.2 * party + 0.15 * affection + 0.1 * challenge + 0.25 * nap,
+    'Dachshund': 0.1 * lively + 0.15 * socialize + 0.1 * party + 0.15 * affection + 0.15 * challenge + 0.35 * nap,
+    'German Shorthaired Pointer': 0.2 * lively + 0.2 * socialize + 0.1 * party + 0.15 * affection + 0.1 * challenge + 0.25 * nap
+}
+
+cat_scores = {
+    'Exotic Shorthair': 0.2 * affection + 0.2 * nap + 0.1 * socialize + 0.1 * challenge,
+    'Ragdoll': 0.15 * affection + 0.3 * nap + 0.1 * socialize + 0.1 * challenge + 0.05 * lively + 0.05 * party,
+    'British Shorthair': 0.1 * affection + 0.25 * nap + 0.1 * socialize + 0.15 * challenge + 0.1 * lively + 0.1 * party,
+    'Persian': 0.2 * affection + 0.3 * nap + 0.05 * socialize + 0.05 * challenge,
+    'Maine Coon': 0.15 * affection + 0.2 * nap + 0.15 * socialize + 0.1 * challenge + 0.1 * lively + 0.1 * party,
+    'American Shorthair': 0.15 * affection + 0.2 * nap + 0.2 * socialize + 0.1 * challenge + 0.1 * lively + 0.05 * party,
+    'Scottish Fold': 0.1 * affection + 0.2 * nap + 0.2 * socialize + 0.1 * challenge + 0.15 * lively + 0.05 * party,
+    'Sphynx': 0.15 * affection + 0.2 * nap + 0.1 * socialize + 0.2 * challenge + 0.1 * lively + 0.05 * party,
+    'Abyssinian': 0.2 * affection + 0.15 * nap + 0.2 * socialize + 0.15 * challenge + 0.1 * lively + 0.1 * party,
+    'Devon Rex': 0.2 * affection + 0.2 * nap + 0.1 * socialize + 0.1 * challenge + 0.1 * lively + 0.1 * party
+}
+
+# Sort and grab top (three)
+top_dogs = sorted(dog_scores, key=dog_scores.get, reverse=True)[:3]
+top_cats = sorted(cat_scores, key=cat_scores.get, reverse=True)[:3]
 
 ### Match answer to tags
 # set size based on living space
@@ -54,6 +83,48 @@ if space == 'corner':
 # set tags based on lifestyle -- excluded for now
 
 # exclude certain types based on allergies - excluded for now
+
+def are_you_dog_or_cat():
+    return f'''
+            <h1>Pet Suggestion Results</h1>
+            # <table>
+            #     <tr>
+            #         <th>Pet Suggestion:</th>
+            #         <td>{ pet_suggestion }</td>
+            #     </tr>
+            #     <tr>
+            #         <th>Pet Type:</th>
+            #         <td>{ pet_type }</td>
+            #     </tr>
+            #     <tr>
+            #         <th>Pet Breed:</th>
+            #         <td>{ pet_breed }</td>
+            #     </tr>
+            # </table>
+            <div class="container">
+                <div class="rectangle">
+                    <div class="dog-bar"></div>
+                    <div class="cat-bar"></div>
+                </div>
+                <p>{ dog_percentage }% Dog, { cat_percentage }% Cat</p>
+                <div class="dog-container">
+                    <div class="dog">
+                        <p>{ top_dogs[0] }</p>
+                        <p>{ top_dogs[1] }</p>
+                        <p>{ top_dogs[2] }</p>
+                    </div>
+                </div>
+                <div class="cat-container">
+                    <div class="cat">
+                        <p>{ top_cats[0] }</p>
+                        <p>{ top_cats[1] }</p>
+                        <p>{ top_cats[2] }</p>
+                    </div>
+                </div>
+                        
+            </div>
+            '''
+
 API_TOKEN = None
 
 def get_token():
@@ -157,6 +228,7 @@ print("<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles.css\" media=\
 print("<title>PetMatcher Results</title>")
 print("</head>")
 print("<body>")
+print(are_you_dog_or_cat())
 print("<h1>PetMatcher Results:</h1>")
 print("<p>Living place: " + str(living) + "</p>")
 print("<p>Space for pet: " + str(space) + "</p>")
