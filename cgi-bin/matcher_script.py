@@ -86,18 +86,18 @@ if space == 'corner':
 
 def are_you_dog_or_cat():
     return f'''
-            <h1>Pet Suggestion Results</h1>
-            <div class="container">
-                <div class="rectangle">
-                    <div class="dog-bar"></div>
-                    <div class="cat-bar"></div>
-                </div>
-                <h3>According to your answers, you are a { dog_percentage }% dog person and a { cat_percentage }% cat person!</h3>
-                <h4>Based on your answers, we suggest you adopt a { top_dogs[0] } or a { top_cats[0] }!</h4>
-                <h4>Other dog suggestions include a { top_dogs[1] } or a { top_dogs[2] }.</h4>
-                <h4>Other cat suggestions include a { top_cats[1] } or a { top_cats[2] }.</h4>
+        <h1>Pet Suggestion Results</h1>
+        <div class="container">
+            <div class="rectangle">
+                <div class="dog-bar"></div>
+                <div class="cat-bar"></div>
             </div>
-            '''
+            <h3>According to your answers, you are a { dog_percentage }% dog person and a { cat_percentage }% cat person!</h3>
+            <h4>Based on your answers, we suggest you adopt a { top_dogs[0] } or a { top_cats[0] }!</h4>
+            <h4>Other dog suggestions include a { top_dogs[1] } or a { top_dogs[2] }.</h4>
+            <h4>Other cat suggestions include a { top_cats[1] } or a { top_cats[2] }.</h4>
+        </div>
+        '''
 
 API_TOKEN = None
 
