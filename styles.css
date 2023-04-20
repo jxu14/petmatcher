@@ -176,3 +176,71 @@ input.multiplechoice {
 p.welcome {
     font-size: 24px;
 }
+
+
+/* --------------------------- Pet Results Listing Styles ------------------------------- */
+/* Style for pet listing */
+.pet-listing {
+    border: 2px solid #999999;
+    padding: 20px;
+    margin: 30px;
+    margin-bottom: 20px;
+    /* width: 80%; */
+  }
+  
+  /* Style for pet name */
+  .pet-name {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for pet description */
+  .pet-description {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for pet photo wrapper */
+  .pet-photo-wrapper {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for pet photo */
+  .pet-photo {
+    display: block;
+    width: 100%;
+  }
+  
+  /* Style for pet details */
+  .pet-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for contact info */
+  .contact-info {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for learn more link */
+  .learn-more-link {
+    display: inline-block;
+    background-color: hsl(195, 68%, 60%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .learn-more-link:hover {
+    background-color: #008080;
+  }
+  
+/* ---------------------------------------------------------------------------------- */

@@ -85,17 +85,33 @@ if space == 'corner':
 # exclude certain types based on allergies - excluded for now
 
 def are_you_dog_or_cat():
+    if dog_percentage > cat_percentage:
+        person = 'a dog'
+    elif cat_percentage > dog_percentage:
+        person = 'a cat'
+    else:
+        person = 'both a dog and cat'
     return f'''
-        <h1>Pet Suggestion Results</h1>
-        <div class="container">
-            <div class="rectangle">
-                <div class="dog-bar"></div>
-                <div class="cat-bar"></div>
+        <div align="center">
+            <div style="display: flex; flex-direction: column; align-items: center; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); padding: 2rem; width: 80%; background-color: #fff;">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Pet Suggestion Results</h1>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">According to your answers, you are {person} person!</h3>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 600px;">
+                        <div style="background-color: #97A3DC; height: 2rem; width: { dog_percentage }%;"></div>
+                        <div style="background-color: #8D5EB0; height: 2rem; width: { cat_percentage }%;"></div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; max-width: 600px;">
+                    <h3 style="font-size: 1.5rem; margin-left: 1rem;">{ dog_percentage }% Dog</h3>
+                        <h3 style="font-size: 1.5rem; margin-left: 1rem;">{ cat_percentage }% Cat</h3>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 1.5rem;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Based on your answers, we suggest you adopt a { top_dogs[0] } or a { top_cats[0] }!</h4>
+                        <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Other dog suggestions include a { top_dogs[1] } or a { top_dogs[2] }.</h4>
+                        <h4 style="font-size: 1.25rem;">Other cat suggestions include a { top_cats[1] } or a { top_cats[2] }.</h4>
+                    </div>
+                </div>
             </div>
-            <h3>According to your answers, you are a { dog_percentage }% dog person and a { cat_percentage }% cat person!</h3>
-            <h4>Based on your answers, we suggest you adopt a { top_dogs[0] } or a { top_cats[0] }!</h4>
-            <h4>Other dog suggestions include a { top_dogs[1] } or a { top_dogs[2] }.</h4>
-            <h4>Other cat suggestions include a { top_cats[1] } or a { top_cats[2] }.</h4>
         </div>
         '''
 
@@ -176,24 +192,28 @@ def format_animals(animals):
 
         # format the information in a box
         box = f'''
-            <div style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
-                <h3>{name}</h3>
-                <p>{description}</p>
-                <img src="{photo}" style="max-width: 300px;">
-                <p>Type: {animal_type}</p>
-                <p>Primary Breed: {primary_breed}</p>
-                <p>Age: {age}</p>
-                <p>Gender: {gender} </p>
-                <h3>Contact info</h3>
-                <span>&ensp;Email: {email} </span>
-                <br>
-                <span>&ensp;Phone Number: {phone} </span>
-                <br>
-                <span>&ensp;Address: {formatted_address} </span>
-                <br>
-                <br>
-                <a href="{link}">Click here to learn more about {name}</a>
-            </div>
+                <div class="pet-listing">
+                    <h2 class="pet-name">{name}</h2>
+                    <p class="pet-description">{description}</p>
+                    <div class="pet-photo-wrapper">
+                        <img class="pet-photo" src="{photo}">
+                    </div>
+                    <ul class="pet-details">
+                        <li><strong>Type:</strong> {animal_type}</li>
+                        <li><strong>Primary Breed:</strong> {primary_breed}</li>
+                        <li><strong>Age:</strong> {age}</li>
+                        <li><strong>Gender:</strong> {gender}</li>
+                    </ul>
+                    <div class="contact-info">
+                        <h3>Contact Info</h3>
+                        <ul>
+                        <li><strong>Email:</strong> href="mailto:{email}"{email}</li>
+                        <li><strong>Phone:</strong> {phone}</li>
+                        <li><strong>Address:</strong> {formatted_address}</li>
+                        </ul>
+                    </div>
+                    <a class="learn-more-link" href="{link}">Learn more about {name}</a>
+                </div>
         '''
 
         all_matches += box
@@ -212,14 +232,14 @@ print("</head>")
 print("<body>")
 print("<a href=\"/index.html\"><img src=\"https://i.imgur.com/AFDeZ98.png\" alt=\"PetMatcher\" class=\"logo\"></a>")
 print(are_you_dog_or_cat())
-print("<h1>PetMatcher Results:</h1>")
-print("<p>Living place: " + str(living) + "</p>")
-print("<p>Space for pet: " + str(space) + "</p>")
-print("<p>Living style: " + str(lifestyle) + "</p>")
-print("<p>Budget: " + str(budget) + "</p>")
-print("<p>Allergies: " + str(allergies) + "</p>")
-print("<p>Hours available: " + str(hours) + "</p>")
-print("<p>Promise: " + str(promise) + "</p>")
+# print("<h1>PetMatcher Results:</h1>")
+# print("<p>Living place: " + str(living) + "</p>")
+# print("<p>Space for pet: " + str(space) + "</p>")
+# print("<p>Living style: " + str(lifestyle) + "</p>")
+# print("<p>Budget: " + str(budget) + "</p>")
+# print("<p>Allergies: " + str(allergies) + "</p>")
+# print("<p>Hours available: " + str(hours) + "</p>")
+# print("<p>Promise: " + str(promise) + "</p>")
 print(format_animals(animals))
 print("</body>")
 print("</html>")
