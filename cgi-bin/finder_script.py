@@ -26,17 +26,7 @@ age = form.getvalue('age')
 declawed = form.getvalue('declawed')
 special_needs = form.getvalue('needs')
 breed = form.getvalue('breed')
-# space = form.getvalue('space')
-# lifestyle = form.getvalue('lifestyle')
-# budget = form.getvalue('budget')
-# allergies = form.getvalue('allergies')
-# hours = form.getvalue('hours')
-# promise = form.getvalue('promise')
 
-
-# set tags based on lifestyle -- excluded for now
-
-# exclude certain types based on allergies - excluded for now
 API_TOKEN = None
 
 def get_token():
