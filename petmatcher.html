@@ -5,60 +5,145 @@
 	<title>PetMatcher</title>
 </head>
 <body>
-	<h1 class="logo">PetMatcher</h1>
+	<a href="/index.html"><img src="https://i.imgur.com/AFDeZ98.png" alt="PetMatcher" class="logo"></a>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	<p>Welcome! You are here because you want a pet but don't know what type to get. Answer the questions below and we'll find pets
+	<h1 class="welcome">Welcome!</h1>
+	<p class="welcome">You are here because you want a pet but don't know what type to get. Answer the questions below and we'll find pets
 		in local shelters that are a good match for you!<p>
-	<form method="get" action="/cgi-bin/matcher_script.py">
-		<label for="living">Do you live in:</label>
+	<form id="matcherform" method="get" action="/cgi-bin/matcher_script.py">
+		<div class="multiplechoice">
+			<label for="living" class="multiplechoice">Do you live in:</label>
+			<br>
+			<input type="radio" name="living" value="house" class="multiplechoice">A House<br>
+			<input type="radio" name="living" value="apartment" class="multiplechoice">An Apartment<br>
+			<br>
+		</div>
+
+		<div class="multiplechoice">
+			<label for="space" class="multiplechoice">How much space do you have for a pet:</label>
+			<br>
+			<input type="radio" name="space" value="corner" class="multiplechoice">A corner of a room<br>
+			<input type="radio" name="space" value="balcony" class="multiplechoice">A balcony<br>
+			<input type="radio" name="space" value="yard" class="multiplechoice">A yard<br>
+			<br>
+		</div>
+
+		<div class="multiplechoice">
+			<label for="lifestyle" class="multiplechoice">Describe your lifestyle:</label>
+			<br>
+			<input type="radio" name="lifestyle" value="active" class="multiplechoice">Active Outdoors<br>
+			<input type="radio" name="lifestyle" value="couch" class="multiplechoice">Couch Potato<br>
+			<br>
+		</div>
+
+		<div class="multiplechoice">
+			<label for="budget" class="multiplechoice">What is your budget to take care of your pet (food, supplies, etc.):</label>
+			<br>
+			<input type="radio" name="budget" value="$50" class="multiplechoice">$50<br>
+			<input type="radio" name="budget" value="$100" class="multiplechoice">$100<br>
+			<input type="radio" name="budget" value="$200" class="multiplechoice">$200<br>
+			<input type="radio" name="budget" value="anything" class="multiplechoice">Anything for the pet<br>
+			<br>
+		</div>
+
+		<div class="multiplechoice">
+			<label for="allergies" class="multiplechoice">Do you have any allergies:</label>
+			<br>
+			<input type="radio" name="allergies" value="fur" class="multiplechoice">Yes - Fur<br>
+			<input type="radio" name="allergies" value="other" class="multiplechoice">Yes - Other<br>
+			<input type="radio" name="allergies" value="none" class="multiplechoice">No<br>
+			<br>
+		</div>
+
+		<div class="multiplechoice">
+			<label for="hours" class="multiplechoice">How many hours per day can you take care of your pet:</label>
+			<br>
+			<input type="radio" name="hours" value="3 hours" class="multiplechoice">&lt;3 hours<br>
+			<input type="radio" name="hours" value="3-6 hours" class="multiplechoice">3-6 hours<br>
+			<input type="radio" name="hours" value="6-12 hours" class="multiplechoice">6-12 hours<br>
+			<input type="radio" name="hours" value="all day" class="multiplechoice">All day, every day<br>
+			<br>
+		</div>
+
+		<hr>
+		<h3>Answer the following questions on a scale of 1 to 5, where 1 means least likely and 5 means most likely</h3>
+		<hr>
+		<br><br>
+
+		<label for="party">After a long day, I want to go out for a party with friends:</label>
 		<br>
-		<input type="radio" name="living" value="house">A House<br>
-		<input type="radio" name="living" value="apartment">An Apartment<br>
+		<div class="slider">
+			<input type="range" name="party" min="1" max="5" value="3" id="party-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
 		<br>
 
-		<label for="space">How much space do you have for a pet:</label>
+		<label for="affection">I tend to enjoy physical affection a lot:</label>
 		<br>
-		<input type="radio" name="space" value="corner">A corner of a room<br>
-		<input type="radio" name="space" value="balcony">A balcony<br>
-		<input type="radio" name="space" value="yard">A yard<br>
-		<br>
-
-		<label for="lifestyle">Describe your lifestyle:</label>
-		<br>
-		<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
-		<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
-		<br>
-
-		<label for="budget">What is your budget to take care of your pet (food, supplies, etc.):</label>
-		<br>
-		<input type="radio" name="budget" value="$50">$50<br>
-		<input type="radio" name="budget" value="$100">$100<br>
-		<input type="radio" name="budget" value="$200">$200<br>
-		<input type="radio" name="budget" value="anything">Anything for the pet<br>
+		<div class="slider">
+			<input type="range" name="affection" min="1" max="5" value="3" id="affection-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
 		<br>
 
-		<label for="allergies">Do you have any allergies:</label>
+		<label for="nap">When I am down, I want to lay down and take a nap:</label>
 		<br>
-		<input type="radio" name="allergies" value="fur">Yes - Fur<br>
-		<input type="radio" name="allergies" value="other">Yes - Other<br>
-		<input type="radio" name="allergies" value="none">No<br>
-		<br>
-
-		<label for="hours">How many hours per day can you take care of your pet:</label>
-		<br>
-		<input type="radio" name="hours" value="<3 hours">&lt;3 hours<br>
-		<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
-		<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
-		<input type="radio" name="hours" value="all day">All day, every day<br>
+		<div class="slider">
+			<input type="range" name="nap" min="1" max="5" value="3" id="nap-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
 		<br>
 
-		<label for="promise">Do you promise to take care of your pet as if they were your own child:</label>
+		<label for="socialize">When I go out, I like to socialize and meet new people:</label>
 		<br>
-		<input type="radio" name="promise" value="yes">Yes<br>
-		<input type="radio" name="promise" value="no">No<br>
+		<div class="slider">
+			<input type="range" name="socialize" min="1" max="5" value="3" id="socialize-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
 		<br>
 
-		<input type="submit" value="Submit">
+		<label for="lively">I like having a lively, sometimes even noisy, household:</label>
+		<br>
+		<div class="slider">
+			<input type="range" name="lively" min="1" max="5" value="3" id="lively-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
+		<br>
+
+		<label for="challenge">I enjoy a good challenge:</label>
+		<br>
+		<div class="slider">
+			<input type="range" name="challenge" min="1" max="5" value="3" id="challenge-slider" class="slider">
+			<label class="slider">1</label>
+			<label class="slider">2</label>
+			<label class="slider">3</label>
+			<label class="slider">4</label>
+			<label class="slider">5</label>
+		</div>
+
+		<br>
+
+		<input type="submit" value="Submit" id="submit-button">
 	</form>
 </body>
 </html>

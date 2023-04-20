@@ -32,11 +32,41 @@
 			}
 		}
 	</script>
+	<script>
+		function showNextQuestion() {
+			// Get the selected value from the first question
+			var type = document.querySelector('input[name="type"]:checked').value;
+
+			// Show/hide questions based on the selected value
+			if (type === "Cat") {
+				document.getElementById("catQuestion").style.display = "block";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Dog") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "block";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Rabbit") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "block";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Other") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "block";
+			}
+		}
+	</script>
 </head>
 <body>
-	<h1 class="logo">PetFinder</h1>
+	<a href="/index.html"><img src="https://i.imgur.com/AFDeZ98.png" alt="PetMatcher" class="logo"></a>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-	<p>You are here because you already know what type of pet you want. Answer the questions below and we'll
+	<h1 class="welcome">Welcome!</h1>
+	<p class="welcome">You are here because you already know what type of pet you want. Answer the questions below and we'll
 		help find your dream pet!<p>
 	<hr>
 	<form method="get" action="/cgi-bin/finder_script.py">
@@ -62,6 +92,7 @@
 			<option value="IL">Illinois</option>
 			<option value="IN">Indiana</option>
 			<option value="IA">Iowa</option>
+			<option value="KS">Kansas</option>
 			<option value="KS">Kansas</option>
 			<option value="KY">Kentucky</option>
 			<option value="LA">Louisiana</option>
@@ -99,6 +130,7 @@
 			<option value="WY">Wyoming</option>
 		</select>
 		<br>
+		<label for="type">What type of pet do you want:</label>
 		<label for="type">What type of pet do you want:</label>
 		<br>
 		<input type="radio" name="type" value="Cat" onchange="showNextQuestion()">Cat<br>

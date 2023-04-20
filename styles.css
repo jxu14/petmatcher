@@ -1,31 +1,33 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
 body {
     background-image: url('https://images.unsplash.com/photo-1575905078445-7f5cf97d9a7f');
     background-size: cover;
     background-color: #deeff7;
 }
 
-h1, label {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-}
+
 
 .logo {
     display: inline;
-    border-style: dotted;
-    border-color: black;
-    border-width: 1px;
-    padding: 2px;
+    padding: 4px;
+    width: 100px;
 }
 
 form {
     margin: 30px auto;
     width: 80%;
-    max-width: 600px;
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px #ddd;
+}
+
+#matcherform {
+    text-align: center;
 }
 
 input[type=radio] {
@@ -67,4 +69,110 @@ label, input[type=radio] {
 
 #statedropdown {
     max-width: 150px;
+}
+
+input.slider {
+    display: flex;
+    width: 70%;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+input.slider input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+  
+input.slider input[type=range]:focus {
+    outline: none;
+}
+  
+input.slider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    cursor: pointer;
+}
+  
+input.slider input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #2196F3;
+    cursor: pointer;
+}
+  
+label.slider  {
+    display: inline-block;
+    text-align: center;
+    width: calc(70% / 5);
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+div.slider {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin: auto;
+    width: 70%;
+}
+
+
+h3 {
+    font-size: 20px;
+    font-family: Verdana;
+}
+#submit-button {
+    padding:5px 15px;
+    background: #deeff7;
+    color: gray;
+    border:1px solid gray;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.multiplechoice {
+    text-align: left;
+}
+
+label.multiplechoice {
+    font-size:24px;
+}
+
+input.multiplechoice {
+    font-size: 20px;
+}
+
+.welcome {
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: Helvetica;
+}
+
+p.welcome {
+    font-size: 24px;
 }

@@ -20,6 +20,25 @@ allergies = form.getvalue('allergies')
 hours = form.getvalue('hours')
 promise = form.getvalue('promise')
 
+# answers with scale of 1-5
+party = form.getvalue('party')
+affection = form.getvalue('affection')
+nap = form.getvalue('nap')
+socialize = form.getvalue('socialize')
+lively = form.getvalue('lively')
+challenge = form.getvalue('challenge')
+
+# calculate scores for each animal based on user input
+dog_score = party + affection + lively + challenge
+cat_score = affection + nap + socialize + challenge
+
+# determine which animal to suggest based on scores
+# if dog_score > cat_score:
+#     # get a dog
+# else:
+#     # get a cat
+
+
 ### Match answer to tags
 # set size based on living space
 if living == 'house':
@@ -74,6 +93,7 @@ def get_animals():
         return data['animals'][:3]
     else:
         return None
+
 def format_animals(animals):        
     all_matches = ''
     animal_names = set()
@@ -90,6 +110,16 @@ def format_animals(animals):
         animal_type = animal['type']
         primary_breed = animal['breeds']['primary']
         age = animal['age']
+        link = animal['url']
+        gender = animal['gender']
+        contact = animal['contact']
+        email = contact['email']
+        phone = contact['phone']
+        address = contact['address']
+        conv = lambda i: i or ''
+        street_num = conv(address['address1'])
+        formatted_address = street_num + " " + str(address['city']) + ", " + str(address['state']) + " " + str(address['postcode'])
+
 
         # format the information in a box
         box = f'''
@@ -100,6 +130,16 @@ def format_animals(animals):
                 <p>Type: {animal_type}</p>
                 <p>Primary Breed: {primary_breed}</p>
                 <p>Age: {age}</p>
+                <p>Gender: {gender} </p>
+                <h3>Contact info</h3>
+                <span>&ensp;Email: {email} </span>
+                <br>
+                <span>&ensp;Phone Number: {phone} </span>
+                <br>
+                <span>&ensp;Address: {formatted_address} </span>
+                <br>
+                <br>
+                <a href="{link}">Click here to learn more about {name}</a>
             </div>
         '''
 
@@ -113,9 +153,11 @@ print("Content-Type: text/html")    # Set the content type of the response
 print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
+print("<link rel=\"stylesheet\" type=\"text/css\" href=\"../styles.css\" media=\"screen\"/>")
 print("<title>PetMatcher Results</title>")
 print("</head>")
 print("<body>")
+print("<a href=\"/index.html\"><img src=\"https://i.imgur.com/AFDeZ98.png\" alt=\"PetMatcher\" class=\"logo\"></a>")
 print("<h1>PetMatcher Results:</h1>")
 print("<p>Living place: " + str(living) + "</p>")
 print("<p>Space for pet: " + str(space) + "</p>")
