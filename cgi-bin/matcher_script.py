@@ -44,7 +44,7 @@ dog_scores = {
     'Golden Retriever': 0.1 * lively + 0.1 * socialize + 0.15 * party + 0.15 * affection + 0.15 * challenge + 0.25 * nap,
     'German Shepherd Dog': 0.1 * lively + 0.1 * socialize + 0.15 * party + 0.2 * affection + 0.1 * challenge + 0.25 * nap,
     'Poodle': 0.15 * lively + 0.1 * socialize + 0.1 * party + 0.2 * affection + 0.1 * challenge + 0.25 * nap,
-    'Bulldog': 0.1 * lively + 0.05 * socialize + 0.15 * party + 0.15 * affection + 0.25 * challenge + 0.25 * nap,
+    'American Bulldog': 0.1 * lively + 0.05 * socialize + 0.15 * party + 0.15 * affection + 0.25 * challenge + 0.25 * nap,
     'Rottweiler': 0.1 * lively + 0.1 * socialize + 0.1 * party + 0.15 * affection + 0.25 * challenge + 0.25 * nap,
     'Beagle': 0.1 * lively + 0.2 * socialize + 0.2 * party + 0.15 * affection + 0.1 * challenge + 0.25 * nap,
     'Dachshund': 0.1 * lively + 0.15 * socialize + 0.1 * party + 0.15 * affection + 0.15 * challenge + 0.35 * nap,
@@ -87,41 +87,15 @@ if space == 'corner':
 def are_you_dog_or_cat():
     return f'''
             <h1>Pet Suggestion Results</h1>
-            # <table>
-            #     <tr>
-            #         <th>Pet Suggestion:</th>
-            #         <td>{ pet_suggestion }</td>
-            #     </tr>
-            #     <tr>
-            #         <th>Pet Type:</th>
-            #         <td>{ pet_type }</td>
-            #     </tr>
-            #     <tr>
-            #         <th>Pet Breed:</th>
-            #         <td>{ pet_breed }</td>
-            #     </tr>
-            # </table>
             <div class="container">
                 <div class="rectangle">
                     <div class="dog-bar"></div>
                     <div class="cat-bar"></div>
                 </div>
-                <p>{ dog_percentage }% Dog, { cat_percentage }% Cat</p>
-                <div class="dog-container">
-                    <div class="dog">
-                        <p>{ top_dogs[0] }</p>
-                        <p>{ top_dogs[1] }</p>
-                        <p>{ top_dogs[2] }</p>
-                    </div>
-                </div>
-                <div class="cat-container">
-                    <div class="cat">
-                        <p>{ top_cats[0] }</p>
-                        <p>{ top_cats[1] }</p>
-                        <p>{ top_cats[2] }</p>
-                    </div>
-                </div>
-                        
+                <h3>According to your answers, you are a { dog_percentage }% dog person and a { cat_percentage }% cat person!</h3>
+                <h4>Based on your answers, we suggest you adopt a { top_dogs[0] } or a { top_cats[0] }!</h4>
+                <h4>Other dog suggestions include a { top_dogs[1] } or a { top_dogs[2] }.</h4>
+                <h4>Other cat suggestions include a { top_cats[1] } or a { top_cats[2] }.</h4>
             </div>
             '''
 
@@ -147,9 +121,17 @@ def get_animals():
     headers = {
         "Authorization": f"Bearer {API_TOKEN}"
     }
-    params = {
-        # "size": animal_size,
-    }
+
+    if dog_percentage > cat_percentage:
+        params = {
+            "type": "Dog",
+            "breed": top_dogs[0],
+        }
+    else:
+        params = {
+            "type": "Cat",
+            "breed": top_cats[0],
+        }
     response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
     if response.status_code == 401:
         if get_token():
@@ -177,7 +159,7 @@ def format_animals(animals):
         if animal['photos']:
             photo = animal['photos'][0]['medium']
         else:
-            photo = 'No photo available'
+            continue
         animal_type = animal['type']
         primary_breed = animal['breeds']['primary']
         age = animal['age']
