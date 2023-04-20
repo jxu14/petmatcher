@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import cgi
 import cgitb
 import requests
@@ -12,16 +12,25 @@ cgitb.enable()
 form = cgi.FieldStorage()
 
 # Get the answers to the questions
+type = form.getvalue('type')
 city = form.getvalue('city')
 city = str(city).capitalize()
 state = form.getvalue('state')
 state = str(state)
-space = form.getvalue('space')
-lifestyle = form.getvalue('lifestyle')
-budget = form.getvalue('budget')
-allergies = form.getvalue('allergies')
-hours = form.getvalue('hours')
-promise = form.getvalue('promise')
+distance = form.getvalue('distance')
+
+age = form.getvalue('age')
+
+declawed = form.getvalue('declawed')
+special_needs = form.getvalue('needs')
+breed = form.getvalue('breed')
+# space = form.getvalue('space')
+# lifestyle = form.getvalue('lifestyle')
+# budget = form.getvalue('budget')
+# allergies = form.getvalue('allergies')
+# hours = form.getvalue('hours')
+# promise = form.getvalue('promise')
+
 
 # set tags based on lifestyle -- excluded for now
 
@@ -50,6 +59,15 @@ def get_animals():
     }
     params = {
         # "size": animal_size,
+        "type": type,
+        "location": city + ", " + state,
+        "distance": distance,
+        "breed": breed,
+        #add age, given that the user could have multiple ages selected
+        "age": age,
+        "declawed": declawed,
+        "special_needs": special_needs,
+
     }
     response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
     if response.status_code == 401:
@@ -62,7 +80,7 @@ def get_animals():
             return None
     if response.status_code == 200:
         data = json.loads(response.text)
-        return data['animals'][:3]
+        return data['animals'][:20]
     else:
         return None
 def format_animals(animals):
@@ -104,19 +122,21 @@ print("Content-Type: text/html")    # Set the content type of the response
 print()    # Print an empty line to indicate the end of the headers
 print("<html>")
 print("<head>")
+# add the css file
+print("<link rel='stylesheet' type='text/css' href='style.css'>")
 print("<title>PetFinder Results</title>")
 print("</head>")
 print("<hr>")
 print("<body>")
 print("<h1>PetFinder Results:</h1>")
-print("<p>City: " + city + "</p>")
-print("<p>State: " + state + "</p>")
-print("<p>Space for pet: " + str(space) + "</p>")
-print("<p>Living style: " + str(lifestyle) + "</p>")
-print("<p>Budget: " + str(budget) + "</p>")
-print("<p>Allergies: " + str(allergies) + "</p>")
-print("<p>Hours available: " + str(hours) + "</p>")
-print("<p>Promise: " + str(promise) + "</p>")
+# print("<p>City: " + city + "</p>")
+# print("<p>State: " + state + "</p>")
+# print("<p>Space for pet: " + str(space) + "</p>")
+# print("<p>Living style: " + str(lifestyle) + "</p>")
+# print("<p>Budget: " + str(budget) + "</p>")
+# print("<p>Allergies: " + str(allergies) + "</p>")
+# print("<p>Hours available: " + str(hours) + "</p>")
+# print("<p>Promise: " + str(promise) + "</p>")
 print(format_animals(animals))
 print("</body>")
 print("</html>")

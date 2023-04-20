@@ -3,6 +3,35 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
 	<title>PetFinder</title>
+	<script>
+		function showNextQuestion() {
+			// Get the selected value from the first question
+			var type = document.querySelector('input[name="type"]:checked').value;
+
+			// Show/hide questions based on the selected value
+			if (type === "Cat") {
+				document.getElementById("catQuestion").style.display = "block";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Dog") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "block";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Rabbit") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "block";
+				document.getElementById("otherQuestion").style.display = "none";
+			} else if (type === "Other") {
+				document.getElementById("catQuestion").style.display = "none";
+				document.getElementById("dogQuestion").style.display = "none";
+				document.getElementById("rabbitQuestion").style.display = "none";
+				document.getElementById("otherQuestion").style.display = "block";
+			}
+		}
+	</script>
 </head>
 <body>
 	<h1 class="logo">PetFinder</h1>
@@ -33,7 +62,7 @@
 			<option value="IL">Illinois</option>
 			<option value="IN">Indiana</option>
 			<option value="IA">Iowa</option>
-		e	<option value="KS">Kansas</option>
+			<option value="KS">Kansas</option>
 			<option value="KY">Kentucky</option>
 			<option value="LA">Louisiana</option>
 			<option value="ME">Maine</option>
@@ -70,170 +99,438 @@
 			<option value="WY">Wyoming</option>
 		</select>
 		<br>
-
-		<label for="space">How much space do you have for a pet:</label>
+		<label for="type">What type of pet do you want:</label>
 		<br>
-		<input type="radio" name="space" value="corner">A corner of a room<br>
-		<input type="radio" name="space" value="balcony">A balcony<br>
-		<input type="radio" name="space" value="yard">A yard<br>
-		<br>
-
-		<label for="lifestyle">Describe your lifestyle:</label>
-		<br>
-		<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
-		<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
+		<input type="radio" name="type" value="Cat" onchange="showNextQuestion()">Cat<br>
+		<input type="radio" name="type" value="Dog" onclick="showNextQuestion()">Dog<br>
+		<input type="radio" name="type" value="Rabbit" onclick="showNextQuestion()">Rabbit<br>
+		<input type="radio" name="type" value="Small & Furry" onclick="showNextQuestion()">Other<br>
 		<br>
 
-		<label for="budget">What is your budget to take care of your pet (food, supplies, etc.):</label>
-		<br>
-		<input type="radio" name="budget" value="$50">$50<br>
-		<input type="radio" name="budget" value="$100">$100<br>
-		<input type="radio" name="budget" value="$200">$200<br>
-		<input type="radio" name="budget" value="anything">Anything for the pet<br>
-		<br>
+		<div id="catQuestion" style="display:none;">
+			<label for="breed">Any particular breed?</label>
+			<select name="breed" id="catdropdown">
+			<option style="display:none">
+				<option value="">Any</option>
+				<option value="Abyssinian">Abyssinian</option>
+				<option value="American Bobtail">American Bobtail</option>
+				<option value="American Curl">American Curl</option>
+				<option value="American Shorthair">American Shorthair</option>
+				<option value="American Wirehair">American Wirehair</option>
+				<option value="Applehead Siamese">Applehead Siamese</option>
+				<option value="Balinese">Balinese</option>
+				<option value="Bengal">Bengal</option>
+				<option value="Birman">Birman</option>
+				<option value="Bombay">Bombay</option>
+				<option value="British Shorthair">British Shorthair</option>
+				<option value="Burmese">Burmese</option>
+				<option value="Burmilla">Burmilla</option>
+				<option value="Calico">Calico</option>
+				<option value="Canadian Hairless">Canadian Hairless</option>
+				<option value="Chartreux">Chartreux</option>
+				<option value="Chausie">Chausie</option>
+				<option value="Chinchilla">Chinchilla</option>
+				<option value="Cornish Rex">Cornish Rex</option>
+				<option value="Cymric">Cymric</option>
+				<option value="Devon Rex">Devon Rex</option>
+				<option value="Dilute Calico">Dilute Calico</option>
+				<option value="Dilute Tortoiseshell">Dilute Tortoiseshell</option>
+				<option value="Domestic Long Hair">Domestic Long Hair</option>
+				<option value="Domestic Medium Hair">Domestic Medium Hair</option>
+				<option value="Domestic Short Hair">Domestic Short Hair</option>
+				<option value="Egyptian Mau">Egyptian Mau</option>
+				<option value="Exotic Shorthair">Exotic Shorthair</option>
+				<option value="Extra-Toes Cat / Hemingway Polydactyl">Extra-Toes Cat / Hemingway Polydactyl</option>
+				<option value="Havana">Havana</option>
+				<option value="Himalayan">Himalayan</option>
+				<option value="Japanese Bobtail">Japanese Bobtail</option>
+				<option value="Javanese">Javanese</option>
+				<option value="Korat">Korat</option>
+				<option value="LaPerm">LaPerm</option>
+				<option value="Maine">Maine</option>
+				<option value="Manx">Manx</option>
+				<option value="Munchkin">Munchkin</option>
+				<option value="Nebelung">Nebelung</option>
+				<option value="Norwegian Forest Cat">Norwegian Forest Cat</option>
+				<option value="Ocicat">Ocicat</option>
+				<option value="Oriental">Oriental</option>
+				<option value="Persian">Persian</option>
+				<option value="Pixie-Bob">Pixie-Bob</option>
+				<option value="Ragamuffin">Ragamuffin</option>
+				<option value="Ragdoll">Ragdoll</option>
+				<option value="Russian Blue">Russian Blue</option>
+				<option value="Scottish Fold">Scottish Fold</option>
+				<option value="Selkirk Rex">Selkirk Rex</option>
+				<option value="Siamese">Siamese</option>
+				<option value="Siberian">Siberian</option>
+				<option value="Silver">Silver</option>
+				<option value="Singapura">Singapura</option>
+				<option value="Snowshoe">Snowshoe</option>
+				<option value="Somali">Somali</option>
+				<option value="Sphynx / Hairless Cat">Sphynx / Hairless Cat</option>
+				<option value="Tabby">Tabby</option>
+				<option value="Tiger">Tiger</option>
+				<option value="Tonkinese">Tonkinese</option>
+				<option value="Torbie">Torbie</option>
+				<option value="Tortoiseshell">Tortoiseshell</option>
+				<option value="Turkish Angora">Turkish Angora</option>
+				<option value="Turkish Van">Turkish Van</option>
+				<option value="Tuxedo">Tuxedo</option>
+				<option value="York Chocolate">York Chocolate</option>
+			</select>
+			<br>
+			<br>
+			<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
+			<label for="age">How old do you want your cat to be?</label><br>
+			<input type="radio" name="age" value="baby">Kitten<br>
+			<input type="radio" name="age" value="young">Young<br>
+			<input type="radio" name="age" value="adult">Adult<br>
+			<input type="radio" name="age" value="senior">Senior<br>
+			<br>
+			<br>
+			<label for="declawed">Does your cat need to be declawed?</label><br>
+			<input type="radio" name="declawed" value="true">Yes<br>
+			<input type="radio" name="declawed" value="">No<br>
+			<br>
+			<br>
+			<label for="needs">Would you be able to give a special needs cat a good home?</label><br>
+			<input type="radio" name="needs" value="true">Yes<br>
+			<input type="radio" name="needs" value="">No<br>
+			<br>
 
-		<label for="allergies">Do you have any allergies:</label>
-		<br>
-		<input type="radio" name="allergies" value="fur">Yes - Fur<br>
-		<input type="radio" name="allergies" value="other">Yes - Other<br>
-		<input type="radio" name="allergies" value="none">No<br>
-		<br>
+		</div>
+		<div id="dogQuestion" style="display:none;">
+			<label for="breed">Any particular breed?</label>
+			<select name="breed" id="dogdropdown">
+			<option style="display:none">
+				<option value="">Any</option>
+				<option value="Affenpinscher">Affenpinscher</option>
+				<option value="Afghan Hound">Afghan Hound</option>
+				<option value="Airedale Terrier">Airedale Terrier</option>
+				<option value="Akbash">Akbash</option>
+				<option value="Akita">Akita</option>
+				<option value="Alaskan Malamute">Alaskan Malamute</option>
+				<option value="American Bulldog">American Bulldog</option>
+				<option value="American Bully">American Bully</option>
+				<option value="American Eskimo Dog">American Eskimo Dog</option>
+				<option value="American Foxhound">American Foxhound</option>
+				<option value="American Hairless Terrier">American Hairless Terrier</option>
+				<option value="American Staffordshire Terrier">American Staffordshire Terrier</option>
+				<option value="American Water Spaniel">American Water Spaniel</option>
+				<option value="Anatolian Shepherd">Anatolian Shepherd</option>
+				<option value="Appenzell Mountain Dog">Appenzell Mountain Dog</option>
+				<option value="Aussiedoodle">Aussiedoodle</option>
+				<option value="Australian Cattle Dog / Blue Heeler">Australian Cattle Dog / Blue Heeler</option>
+				<option value="Australian Kelpie">Australian Kelpie</option>
+				<option value="Australian Shepherd">Australian Shepherd</option>
+				<option value="Australian Terrier">Australian Terrier</option>
+				<option value="Basenji">Basenji</option>
+				<option value="Basset Hound">Basset Hound</option>
+				<option value="Beagle">Beagle</option>
+				<option value="Bearded Collie">Bearded Collie</option>
+				<option value="Beauceron">Beauceron</option>
+				<option value="Bedlington Terrier">Bedlington Terrier</option>
+				<option value="Belgian Shepherd / Laekenois">Belgian Shepherd / Laekenois</option>
+				<option value="Belgian Shepherd / Malinois">Belgian Shepherd / Malinois</option>
+				<option value="Belgian Shepherd / Sheepdog">Belgian Shepherd / Sheepdog</option>
+				<option value="Belgian Shepherd / Tervuren">Belgian Shepherd / Tervuren</option>
+				<option value="Bernedoodle">Bernedoodle</option>
+				<option value="Bernese Mountain Dog">Bernese Mountain Dog</option>
+				<option value="Bichon Frise">Bichon Frise</option>
+				<option value="Black and Tan Coonhound">Black and Tan Coonhound</option>
+				<option value="Black Labrador Retriever">Black Labrador Retriever</option>
+				<option value="Black Mouth Cur">Black Mouth Cur</option>
+				<option value="Black Russian Terrier">Black Russian Terrier</option>
+				<option value="Bloodhound">Bloodhound</option>
+				<option value="Blue Lacy">Blue Lacy</option>
+				<option value="Bluetick Coonhound">Bluetick Coonhound</option>
+				<option value="Boerboel">Boerboel</option>
+				<option value="Border Collie">Border Collie</option>
+				<option value="Border Terrier">Border Terrier</option>
+				<option value="Borzoi">Borzoi</option>
+				<option value="Boston Terrier">Boston Terrier</option>
+				<option value="Bouvier des Flandres">Bouvier des Flandres</option>
+				<option value="Boxer">Boxer</option>
+				<option value="Boykin Spaniel">Boykin Spaniel</option>
+				<option value="Briard">Briard</option>
+				<option value="Brittany">Brittany</option>
+				<option value="Brussels Griffon">Brussels Griffon</option>
+				<option value="Bull Terrier">Bull Terrier</option>
+				<option value="Bulldog">Bulldog</option>
+				<option value="Bullmastiff">Bullmastiff</option>
+				<option value="Cairn Terrier">Cairn Terrier</option>
+				<option value="Canaan Dog">Canaan Dog</option>
+				<option value="Cane Corso">Cane Corso</option>
+				<option value="Cardigan Welsh Corgi">Cardigan Welsh Corgi</option>
+				<option value="Catahoula Leopard Dog">Catahoula Leopard Dog</option>
+				<option value="Caucasian Shepherd / Caucasian Ovtcharka">Caucasian Shepherd / Caucasian Ovtcharka</option>
+				<option value="Cavalier King Charles Spaniel">Cavalier King Charles Spaniel</option>
+				<option value="Chesapeake Bay Retriever">Chesapeake Bay Retriever</option>
+				<option value="Chihuahua">Chihuahua</option>
+				<option value="Chinese Crested">Chinese Crested</option>
+				<option value="Chinese Shar-Pei">Chinese Shar-Pei</option>
+				<option value="Chinook">Chinook</option>
+				<option value="Chow Chow">Chow Chow</option>
+				<option value="Clumber Spaniel">Clumber Spaniel</option>
+				<option value="Cockapoo">Cockapoo</option>
+				<option value="Cocker Spaniel">Cocker Spaniel</option>
+				<option value="Collie">Collie</option>
+				<option value="Coton de Tulear">Coton de Tulear</option>
+				<option value="Curly-Coated Retriever">Curly-Coated Retriever</option>
+				<option value="Dachshund">Dachshund</option>
+				<option value="Dalmatian">Dalmatian</option>
+				<option value="Dandie Dinmont Terrier">Dandie Dinmont Terrier</option>
+				<option value="Doberman Pinscher">Doberman Pinscher</option>
+				<option value="Dogo Argentino">Dogo Argentino</option>
+				<option value="Dogue de Bordeaux">Dogue de Bordeaux</option>
+				<option value="Dutch Shepherd">Dutch Shepherd</option>
+				<option value="English Cocker Spaniel">English Cocker Spaniel</option>
+				<option value="English Foxhound">English Foxhound</option>
+				<option value="English Setter">English Setter</option>
+				<option value="English Springer Spaniel">English Springer Spaniel</option>
+				<option value="English Toy Spaniel">English Toy Spaniel</option>
+				<option value="Entlebucher Mountain Dog">Entlebucher Mountain Dog</option>
+				<option value="Field Spaniel">Field Spaniel</option>
+				<option value="Finnish Lapphund">Finnish Lapphund</option>
+				<option value="Finnish Spitz">Finnish Spitz</option>
+				<option value="Flat-Coated Retriever">Flat-Coated Retriever</option>
+				<option value="French Bulldog">French Bulldog</option>
+				<option value="German Pinscher">German Pinscher</option>
+				<option value="German Shepherd Dog">German Shepherd Dog</option>
+				<option value="German Shorthaired Pointer">German Shorthaired Pointer</option>
+				<option value="German Spitz">German Spitz</option>
+				<option value="German Wirehaired Pointer">German Wirehaired Pointer</option>
+				<option value="Giant Schnauzer">Giant Schnauzer</option>
+				<option value="Glen of Imaal Terrier">Glen of Imaal Terrier</option>
+				<option value="Golden Retriever">Golden Retriever</option>
+				<option value="Goldendoodle">Goldendoodle</option>
+				<option value="Gordon Setter">Gordon Setter</option>
+				<option value="Great Dane">Great Dane</option>
+				<option value="Great Pyrenees">Great Pyrenees</option>
+				<option value="Greater Swiss Mountain Dog">Greater Swiss Mountain Dog</option>
+				<option value="Greyhound">Greyhound</option>
+				<option value="Hamiltonstovare">Hamiltonstovare</option>
+				<option value="Harrier">Harrier</option>
+				<option value="Havanese">Havanese</option>
+				<option value="Hound">Hound</option>
+				<option value="Hovawart">Hovawart</option>
+				<option value="Husky">Husky</option>
+				<option value="Ibizan Hound">Ibizan Hound</option>
+				<option value="Icelandic Sheepdog">Icelandic Sheepdog</option>
+				<option value="Illyrian Sheepdog">Illyrian Sheepdog</option>
+				<option value="Irish Setter">Irish Setter</option>
+				<option value="Irish Terrier">Irish Terrier</option>
+				<option value="Irish Water Spaniel">Irish Water Spaniel</option>
+				<option value="Irish Wolfhound">Irish Wolfhound</option>
+				<option value="Italian Greyhound">Italian Greyhound</option>
+				<option value="Jack Russell Terrier">Jack Russell Terrier</option>
+				<option value="Japanese Chin">Japanese Chin</option>
+				<option value="Jindo">Jindo</option>
+				<option value="Kai Dog">Kai Dog</option>
+				<option value="Karelian Bear Dog">Karelian Bear Dog</option>
+				<option value="Keeshond">Keeshond</option>
+				<option value="Kerry Blue Terrier">Kerry Blue Terrier</option>
+				<option value="Kishu">Kishu</option>
+				<option value="Klee Kai">Klee Kai</option>
+				<option value="Komondor">Komondor</option>
+				<option value="Kuvasz">Kuvasz</option>
+				<option value="Kyi Leo">Kyi Leo</option>
+				<option value="Labradoodle">Labradoodle</option>
+				<option value="Labrador Retriever">Labrador Retriever</option>
+				<option value="Lakeland Terrier">Lakeland Terrier</option>
+				<option value="Leonberger">Leonberger</option>
+				<option value="Lhasa Apso">Lhasa Apso</option>
+				<option value="Lowchen">Lowchen</option>
+				<option value="Maltese">Maltese</option>
+				<option value="Manchester Terrier">Manchester Terrier</option>
+				<option value="Mastiff">Mastiff</option>
+				<option value="Miniature Pinscher">Miniature Pinscher</option>
+				<option value="Miniature Schnauzer">Miniature Schnauzer</option>
+				<option value="Mixed Breed">Mixed Breed</option>
+				<option value="Mountain Cur">Mountain Cur</option>
+				<option value="Mudi">Mudi</option>
+				<option value="Neapolitan Mastiff">Neapolitan Mastiff</option>
+				<option value="Newfoundland">Newfoundland</option>
+				<option value="Norfolk Terrier">Norfolk Terrier</option>
+				<option value="Norwegian Buhund">Norwegian Buhund</option>
+				<option value="Norwegian Elkhound">Norwegian Elkhound</option>
+				<option value="Norwegian Lundehund">Norwegian Lundehund</option>
+				<option value="Norwich Terrier">Norwich Terrier</option>
+				<option value="Nova Scotia Duck Tolling Retriever">Nova Scotia Duck Tolling Retriever</option>
+				<option value="Old English Sheepdog">Old English Sheepdog</option>
+				<option value="Otterhound">Otterhound</option>
+				<option value="Papillon">Papillon</option>
+				<option value="Parson Russell Terrier">Parson Russell Terrier</option>
+				<option value="Pekingese">Pekingese</option>
+				<option value="Pembroke Welsh Corgi">Pembroke Welsh Corgi</option>
+				<option value="Petit Basset Griffon Vendeen">Petit Basset Griffon Vendeen</option>
+				<option value="Pharaoh Hound">Pharaoh Hound</option>
+				<option value="Plott">Plott</option>
+				<option value="Pointer">Pointer</option>
+				<option value="Polish Lowland Sheepdog">Polish Lowland Sheepdog</option>
+				<option value="Pomeranian">Pomeranian</option>
+				<option value="Poodle">Poodle</option>
+				<option value="Portuguese Podengo Pequeno">Portuguese Podengo Pequeno</option>
+				<option value="Portuguese Water Dog">Portuguese Water Dog</option>
+				<option value="Pug">Pug</option>
+				<option value="Puli">Puli</option>
+				<option value="Pyrenean Shepherd">Pyrenean Shepherd</option>
+				<option value="Rat Terrier">Rat Terrier</option>
+				<option value="Redbone Coonhound">Redbone Coonhound</option>
+				<option value="Retriever">Retriever</option>
+				<option value="Rhodesian Ridgeback">Rhodesian Ridgeback</option>	
+				<option value="Rottweiler">Rottweiler</option>
+				<option value="Saint Bernard">Saint Bernard</option>
+				<option value="Saluki">Saluki</option>
+				<option value="Samoyed">Samoyed</option>
+				<option value="Schipperke">Schipperke</option>
+				<option value="Schnoodle">Schnoodle</option>
+				<option value="Scottish Deerhound">Scottish Deerhound</option>
+				<option value="Scottish Terrier">Scottish Terrier</option>
+				<option value="Sealyham Terrier">Sealyham Terrier</option>
+				<option value="Setter">Setter</option>
+				<option value="Shar Pei">Shar Pei</option>
+				<option value="Shetland Sheepdog">Shetland Sheepdog</option>
+				<option value="Shiba Inu">Shiba Inu</option>
+				<option value="Shih Tzu">Shih Tzu</option>
+				<option value="Siberian Husky">Siberian Husky</option>
+				<option value="Silky Terrier">Silky Terrier</option>
+				<option value="Skye Terrier">Skye Terrier</option>
+				<option value="Sloughi">Sloughi</option>
+				<option value="Small Munsterlander Pointer">Small Munsterlander Pointer</option>
+				<option value="Soft Coated Wheaten Terrier">Soft Coated Wheaten Terrier</option>
+				<option value="Stabyhoun">Stabyhoun</option>
+				<option value="Staffordshire Bull Terrier">Staffordshire Bull Terrier</option>
+				<option value="Standard Schnauzer">Standard Schnauzer</option>
+				<option value="Sussex Spaniel">Sussex Spaniel</option>
+				<option value="Swedish Vallhund">Swedish Vallhund</option>
+				<option value="Terrier">Terrier</option>
+				<option value="Thai Ridgeback">Thai Ridgeback</option>
+				<option value="Tibetan Mastiff">Tibetan Mastiff</option>
+				<option value="Tibetan Spaniel">Tibetan Spaniel</option>
+				<option value="Tibetan Terrier">Tibetan Terrier</option>
+				<option value="Toy Fox Terrier">Toy Fox Terrier</option>
+				<option value="Treeing Tennessee Brindle">Treeing Tennessee Brindle</option>
+				<option value="Treeing Walker Coonhound">Treeing Walker Coonhound</option>
+				<option value="Vizsla">Vizsla</option>
+				<option value="Weimaraner">Weimaraner</option>
+				<option value="Welsh Springer Spaniel">Welsh Springer Spaniel</option>
+				<option value="Welsh Terrier">Welsh Terrier</option>
+				<option value="West Highland White Terrier">West Highland White Terrier</option>
+				<option value="Whippet">Whippet</option>
+				<option value="Wire Fox Terrier">Wire Fox Terrier</option>
+				<option value="Wirehaired Pointing Griffon">Wirehaired Pointing Griffon</option>
+				<option value="Xoloitzcuintli">Xoloitzcuintli</option>
+				<option value="Yorkshire Terrier">Yorkshire Terrier</option>
+			</select>
+			<br>
+			<br>
+			<br>
+			<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
+			<label for="age">How old do you want your dog to be?</label><br>
 
-		<label for="hours">How many hours per day can you take care of your pet:</label>
-		<br>
-		<input type="radio" name="hours" value="<3 hours">&lt;3 hours<br>
-		<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
-		<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
-		<input type="radio" name="hours" value="all day">All day, every day<br>
-		<br>
+			<input type="checkbox" name="age" value="baby">Puppy<br>
+			<input type="checkbox" name="age" value="young">Young<br>
+			<input type="checkbox" name="age" value="adult">Adult<br>
+			<input type="checkbox" name="age" value="senior">Senior<br>
+			<br>
+			<br>
+			<label for="needs">Would you be able to give a special needs dog a good home?</label><br>
+			<input type="radio" name="needs" value="true">Yes<br>
+			<input type="radio" name="needs" value="">No<br>
+			<br>
+		</div>
+	</div>
+	<div id="rabbitQuestion" style="display:none;">
+		<label for="breed">Any particular breed?</label>
+		<select name="breed" id="rabbitdropdown">
+		<option style="display:none">
+			<option value="">Any</option>
+			<option value="American">American</option>
+			<option value="American Fuzzy Lop">American Fuzzy Lop</option>
+			<option value="American Sable">American Sable</option>
+			<option value="Angora Rabbit">Angora Rabbit</option>
+			<option value="Belgian Hare">Belgian Hare</option>
+			<option value="Beveren">Beveren</option>
+			<option value="Britannia Petite">Britannia Petite</option>
+			<option value="Bunny Rabbit">Bunny Rabbit</option>
+			<option value="Californian">Californian</option>
+			<option value="Champagne D'Argent">Champagne D'Argent</option>
+			<option value="Checkered Giant">Checkered Giant</option>
+			<option value="Chinchilla">Chinchilla</option>
+			<option value="Cinnamon">Cinnamon</option>
+			<option value="Creme D'Argent">Creme D'Argent</option>
+			<option value="Dutch">Dutch</option>
+			<option value="Dwarf">Dwarf</option>
+			<option value="Dwarf Eared">Dwarf Eared</option>
+			<option value="English Lop">English Lop</option>
+			<option value="English Spot">English Spot</option>
+			<option value="Flemish Giant">Flemish Giant</option>
+			<option value="Florida White">Florida White</option>
+			<option value="French Lop">French Lop</option>
+			<option value="Harlequin">Harlequin</option>
+			<option value="Havana">Havana</option>
+			<option value="Himalayan">Himalayan</option>
+			<option value="Holland Lop">Holland Lop</option>
+			<option value="Hotot">Hotot</option>
+			<option value="Jersey Wooly">Jersey Wooly</option>
+			<option value="Lionhead">Lionhead</option>
+			<option value="Mini Lop">Mini Lop</option>
+			<option value="Mini Rex">Mini Rex</option>
+			<option value="Netherland Dwarf">Netherland Dwarf</option>
+			<option value="New Zealand">New Zealand</option>
+			<option value="Palomino">Palomino</option>
+			<option value="Polish">Polish</option>
+			<option value="Rex">Rex</option>
+			<option value="Rhinelander">Rhinelander</option>
+			<option value="Satin">Satin</option>	
+			<option value="Silver">Silver</option>	
+			<option value="Silver Fox">Silver Fox</option>
+			<option value="Silver Marten">Silver Marten</option>
+			<option value="Tan">Tan</option>
+		</select>
+			<br>
+			<br>
+			<br>
+			<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
+			<label for="age">How old do you want your rabbit to be?</label><br>
 
-		<label for="promise">Do you promise to take care of your pet as if they were your own child:</label>
-		<br>
-		<input type="radio" name="promise" value="yes">Yes<br>
-		<input type="radio" name="promise" value="no">No<br>
-		<br>
+			<input type="checkbox" name="age" value="baby">Baby<br>
+			<input type="checkbox" name="age" value="young">Young<br>
+			<input type="checkbox" name="age" value="adult">Adult<br>
+			<input type="checkbox" name="age" value="senior">Senior<br>
+			<br>
+			<br>
+			<label for="needs">Would you be able to give a special needs rabbit a good home?</label><br>
+			<input type="radio" name="needs" value="true">Yes<br>
+			<input type="radio" name="needs" value="">No<br>
+			<br>
+	</div>
+	<div id="otherQuestion" style="display:none;">
 
+	</div>
 		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Pet Matcher</title>
-	<script>
-		// Function to show or hide a group of radio buttons based on the user's previous answer
-		function showQuestion(previousAnswer, questionID, nextQuestionID) {
-    var question = document.getElementById(questionID);
-    if (previousAnswer === "") {
-        // If the user has not answered any questions yet, show this question
-        question.style.display = "block";
-    } else {
-        // If the user has answered previous questions, hide this question and its radio buttons
-        question.style.display = "none";
-        var radioButtons = question.getElementsByTagName("input");
-        for (var i = 0; i < radioButtons.length; i++) {
-            if (radioButtons[i].type === "radio") {
-                radioButtons[i].checked = false;
-            }
-        }
-        // If the next question's container element exists, hide it
-        var nextQuestion = document.getElementById(nextQuestionID);
-        if (nextQuestion) {
-            nextQuestion.style.display = "none";
-        }
-    }
-    // Show the container element of the next question if the user has answered this question
-    if (previousAnswer !== "") {
-        var nextQuestion = document.getElementById(nextQuestionID);
-        nextQuestion.style.display = "block";
-    }
-}
-
-
-		// Function to handle the submission of the form
-		function handleSubmit(event) {
-			event.preventDefault();
-			// Do something with the form data
-			console.log("Form submitted!");
-		}
-	</script>
-</head>
-<body onload="showQuestion('', 'question1')">
-	<h1>Pet Matcher</h1>
-	<form method="get" action="/cgi-bin/script.py">
-		<div id="question1">
-			<label>Do you live in:</label>
-			<br>
-			<input type="radio" name="living" value="house">A House<br>
-			<input type="radio" name="living" value="apartment">An Apartment<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'living\']:checked').value, 'question1', 'question2')">
-
-		</div>
-
-		<div id="question2" style="display:none">
-			<label>How much space do you have for a pet:</label>
-			<br>
-			<input type="radio" name="space" value="corner">A corner of a room<br>
-			<input type="radio" name="space" value="balcony">A balcony<br>
-			<input type="radio" name="space" value="yard">A yard<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'space\']:checked').value, 'question2','question3')">
-		</div>
-
-		<div id="question3" style="display:none">
-			<label>Describe your lifestyle:</label>
-			<br>
-			<input type="radio" name="lifestyle" value="active">Active Outdoors<br>
-			<input type="radio" name="lifestyle" value="couch">Couch Potato<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'lifestyle\']:checked').value, 'question3', 'question4')">
-		</div>
-
-		<div id="question4" style="display:none">
-			<label>What is your budget to take care of your pet (food, supplies, etc.):</label>
-			<br>
-			<input type="radio" name="budget" value="$50">$50<br>
-			<input type="radio" name="budget" value="$100">$100<br>
-			<input type="radio" name="budget" value="$200">$200<br>
-			<input type="radio" name="budget" value="anything">Anything for the pet<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'budget\']:checked').value, 'question4', 'question5')">
-		</div>
-
-		<div id="question5" style="display:none">
-			<label>Do you have any allergies:</label>
-			<br>
-			<input type="radio" name="allergies" value="fur">Yes - Fur<br>
-			<input type="radio" name="allergies" value="other">Yes - Other<br>
-			<input type="radio" name="allergies" value="none">No<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'allergies\']:checked').value, 'question5', 'question6')">
-		</div>
-
-		<div id="question6" style="display:none">
-			<label>How many hours per day can you take care of your pet:</label>
-			<br>
-			<input type="radio" name="hours" value="3 hours">&lt;3 hours<br>
-			<input type="radio" name="hours" value="3-6 hours">3-6 hours<br>
-			<input type="radio" name="hours" value="6-12 hours">6-12 hours<br>
-			<input type="radio" name="hours" value="all day">All day, every day<br>
-			<br>
-			<input type="button" value="Next" onclick="showQuestion(document.querySelector('input[name=\'hours\']:checked').value, 'question6','question7')">
-		</div>
-
-		<div id="question7" style="display:none">
-			<label>Do you promise to take care of your pet as if they were your own child:</label>
-			<br>
-			<input type="radio" name="promise" value="yes">Yes<br>
-			<input type="radio" name="promise" value="no">No<br>
-			<br>
-		</div>
-		<input type="submit" value="Submit">
-	</form>
-</body>
-</html>
-
- -->
+    
+     
+         
