@@ -15,6 +15,8 @@ form = cgi.FieldStorage()
 type = form.getvalue('type')
 if type == "Other":
     type = "Small & Furry"
+if type=="Dog" or type=="Cat":
+    kids = form.getvalue('kids')
 city = form.getvalue('city')
 city = str(city).capitalize()
 state = form.getvalue('state')
@@ -49,18 +51,27 @@ def get_animals():
     headers = {
         "Authorization": f"Bearer {API_TOKEN}"
     }
-    params = {
-        # "size": animal_size,
-        "type": type,
-        "location": city + ", " + state,
-        "distance": distance,
-        "breed": breed,
-        #add age, given that the user could have multiple ages selected
-        "age": age,
-        "declawed": declawed,
-        "special_needs": special_needs,
-
-    }
+    if type == "Dog" or type == "Cat":
+        params = {
+            "type": type,
+            "location": city + ", " + state,
+            "distance": distance,
+            "breed": breed,
+            "age": age,
+            "kids": kids,
+            "declawed": declawed,
+            "special_needs": special_needs,
+        }
+    else:
+        params = {
+            "type": type,
+            "location": city + ", " + state,
+            "distance": distance,
+            "breed": breed,
+            "age": age,
+            "declawed": declawed,
+            "special_needs": special_needs,
+        }
     response = requests.get("https://api.petfinder.com/v2/animals", headers=headers, params=params)
     if response.status_code == 401:
         if get_token():
