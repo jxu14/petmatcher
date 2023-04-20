@@ -32,35 +32,6 @@
 			}
 		}
 	</script>
-	<script>
-		function showNextQuestion() {
-			// Get the selected value from the first question
-			var type = document.querySelector('input[name="type"]:checked').value;
-
-			// Show/hide questions based on the selected value
-			if (type === "Cat") {
-				document.getElementById("catQuestion").style.display = "block";
-				document.getElementById("dogQuestion").style.display = "none";
-				document.getElementById("rabbitQuestion").style.display = "none";
-				document.getElementById("otherQuestion").style.display = "none";
-			} else if (type === "Dog") {
-				document.getElementById("catQuestion").style.display = "none";
-				document.getElementById("dogQuestion").style.display = "block";
-				document.getElementById("rabbitQuestion").style.display = "none";
-				document.getElementById("otherQuestion").style.display = "none";
-			} else if (type === "Rabbit") {
-				document.getElementById("catQuestion").style.display = "none";
-				document.getElementById("dogQuestion").style.display = "none";
-				document.getElementById("rabbitQuestion").style.display = "block";
-				document.getElementById("otherQuestion").style.display = "none";
-			} else if (type === "Other") {
-				document.getElementById("catQuestion").style.display = "none";
-				document.getElementById("dogQuestion").style.display = "none";
-				document.getElementById("rabbitQuestion").style.display = "none";
-				document.getElementById("otherQuestion").style.display = "block";
-			}
-		}
-	</script>
 </head>
 <body>
 	<a href="/index.html"><img src="https://i.imgur.com/AFDeZ98.png" alt="PetMatcher" class="logo"></a>
@@ -136,7 +107,7 @@
 		<input type="radio" name="type" value="Cat" onchange="showNextQuestion()">Cat<br>
 		<input type="radio" name="type" value="Dog" onclick="showNextQuestion()">Dog<br>
 		<input type="radio" name="type" value="Rabbit" onclick="showNextQuestion()">Rabbit<br>
-		<input type="radio" name="type" value="Small & Furry" onclick="showNextQuestion()">Other<br>
+		<input type="radio" name="type" value="Other" onclick="showNextQuestion()">Other<br>
 		<br>
 
 		<div id="catQuestion" style="display:none;">
@@ -557,7 +528,13 @@
 			<br>
 	</div>
 	<div id="otherQuestion" style="display:none;">
-
+		<label for="distance">How far are you willing to travel to get your furry friend?</label><br>
+			<input type="radio" name="distance" value=5>5 miles<br>
+			<input type="radio" name="distance" value=15>15 miles<br>
+			<input type="radio" name="distance" value=25>25 miles<br>
+			<input type="radio" name="distance" value=50>50 miles<br>
+			<input type="radio" name="distance" value=500>As far as it takes<br>
+			<br>
 	</div>
 		<input type="submit" value="Submit">
 	</form>

@@ -13,6 +13,8 @@ form = cgi.FieldStorage()
 
 # Get the answers to the questions
 type = form.getvalue('type')
+if type == "Other":
+    type = "Small & Furry"
 city = form.getvalue('city')
 city = str(city).capitalize()
 state = form.getvalue('state')
@@ -150,15 +152,9 @@ print("<hr>")
 print("<body>")
 print("<a href=\"/index.html\"><img src=\"https://i.imgur.com/AFDeZ98.png\" alt=\"PetMatcher\" class=\"logo\"></a>")
 print("<h1>PetFinder Results:</h1>")
-# print("<p>City: " + city + "</p>")
-# print("<p>State: " + state + "</p>")
-# print("<p>Space for pet: " + str(space) + "</p>")
-# print("<p>Living style: " + str(lifestyle) + "</p>")
-# print("<p>Budget: " + str(budget) + "</p>")
-# print("<p>Allergies: " + str(allergies) + "</p>")
-# print("<p>Hours available: " + str(hours) + "</p>")
-# print("<p>Promise: " + str(promise) + "</p>")
 print(format_animals(animals))
+if not animals:
+    print("<h2>Sorry there aren't any matches for your search. :( Maybe if you try again with different parameters you will find your new best friend!</h2>")
 print("</body>")
 print("</html>")
 
